@@ -1,14 +1,40 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art/Roguelike_City_Pack/Sample.png" type="Texture" id=1]
 [ext_resource path="res://base_theme.tres" type="Theme" id=2]
 [ext_resource path="res://Fonts/kenney_pixel_dynfont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://example_scene_3.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/kenney_space_dynfont.tres" type="DynamicFont" id=5]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.144628, 0, 0, Vector2( 1, 1 ), 0.0340911, 0.0, 0, 0 ]
 
 [node name="Node" type="Node"]
 script = ExtResource( 4 )
+dynfont_resources = [ ExtResource( 5 ), ExtResource( 3 ) ]
+scale_curve = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Zone0" type="Polygon2D" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+color = Color( 0.219608, 1, 0, 1 )
+polygon = PoolVector2Array( -3, -1, 996, 4, 1003, 589, 0, 594 )
+
+[node name="Zone1" type="Polygon2D" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+color = Color( 1, 0.984314, 0, 1 )
+polygon = PoolVector2Array( 999, 4, 1398, 6, 1405, 865, 2, 853, 4, 584, 1003, 594 )
+
+[node name="Zone2" type="Polygon2D" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( 8, 856, 3, 1229, 2291, 1239, 2291, 0, 1406, 5, 1406, 866 )
+
+[node name="Zone3" type="Polygon2D" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+color = Color( 0.615686, 0, 0.392157, 1 )
+polygon = PoolVector2Array( 1, 1234, 1, 1819, 3678, 1799, 3674, 9, 2295, -1, 2295, 1240 )
 
 [node name="Large" type="Sprite" parent="Node2D"]
 self_modulate = Color( 1, 1, 1, 0.313726 )
@@ -63,7 +89,7 @@ margin_left = -0.343994
 margin_top = 0.199982
 margin_right = 0.367981
 custom_fonts/font = ExtResource( 3 )
-text = "Stretch Mode is on, and aspect ratio is being enforced. However there are now black borders on the edges."
+text = "Stretch Mode is disabled, and now we're adjusting the font via scripting."
 align = 1
 valign = 1
 autowrap = true
